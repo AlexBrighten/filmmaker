@@ -3,96 +3,80 @@
 import { useState } from "react";
 import useMasonry from "@/utils/useMasonry";
 import Image, { StaticImageData } from "next/image";
-import TestimonialImg01 from "@/public/images/testimonial-01.jpg";
-import TestimonialImg02 from "@/public/images/testimonial-02.jpg";
-import TestimonialImg03 from "@/public/images/testimonial-03.jpg";
-import TestimonialImg04 from "@/public/images/testimonial-04.jpg";
-import TestimonialImg05 from "@/public/images/testimonial-05.jpg";
-import TestimonialImg06 from "@/public/images/testimonial-06.jpg";
-import TestimonialImg07 from "@/public/images/testimonial-07.jpg";
-import TestimonialImg08 from "@/public/images/testimonial-08.jpg";
-import TestimonialImg09 from "@/public/images/testimonial-09.jpg";
-import ClientImg01 from "@/public/images/client-logo-01.svg";
-import ClientImg02 from "@/public/images/client-logo-02.svg";
-import ClientImg03 from "@/public/images/client-logo-03.svg";
-import ClientImg04 from "@/public/images/client-logo-04.svg";
-import ClientImg05 from "@/public/images/client-logo-05.svg";
-import ClientImg06 from "@/public/images/client-logo-06.svg";
-import ClientImg07 from "@/public/images/client-logo-07.svg";
-import ClientImg08 from "@/public/images/client-logo-08.svg";
-import ClientImg09 from "@/public/images/client-logo-09.svg";
+
+import person from "@/public/images/char.png";
 
 const testimonials = [
   {
-    clientImg: ClientImg01,
-    name: "MaKayla P.",
+    img: person,
+    name: "Maahi Prakash",
     profession: "Producer",
     content:
-      "Finding reliable crew used to be a nightmare. This platform has completely changed the game—now I can assemble a full production team in minutes. It’s like casting magic!",
+      "This platform took a huge load off my shoulders. Finding skilled crew members for every stage of production is now just a few clicks away. It’s like a dream team generator!",
     categories: [1, 3, 5],
   },
   {
-    clientImg: ClientImg02,
-    name: "Andrew K.",
+    img: person,
+    name: "Arjun Menon",
     profession: "Actor",
     content:
-      "I used to bounce between five apps to find decent gigs. Now I just open this platform, and boom—legit roles with serious teams. It’s streamlined my hustle big time.",
+      "Earlier, I had to rely on word of mouth and luck to find good gigs. Now I just log in, update my profile, and boom — auditions, networking, and collaborations all in one place!",
     categories: [1, 2, 4],
   },
   {
-    clientImg: ClientImg03,
-    name: "Lucy D.",
+    img: person,
+    name: "Lalitha Devi",
     profession: "Producer",
     content:
-      "This platform is literally my new assistant. I’ve booked entire crews faster than I’ve ordered coffee. It saves time, stress, and awkward last-minute phone calls.",
+      "I used to struggle with finding editors who truly understood my vision. This platform helped me discover some hidden gems — fast, reliable, and super talented!",
     categories: [1, 2, 5],
   },
   {
-    clientImg: ClientImg04,
-    name: "Pavel M.",
+    img: person,
+    name: "Pawan Kashyap",
     profession: "Editor",
     content:
-      "As a freelance editor, getting consistent projects was tough. Now I’ve got clients reaching out to *me*! This platform gave me visibility I didn’t even know I needed.",
+      "No more endless scrolling through Facebook groups. This site connects me with the right projects and clients who value my craft. Absolute game-changer for post-prod folks.",
     categories: [1, 4],
   },
   {
-    clientImg: ClientImg05,
-    name: "Miriam E.",
+    img: person,
+    name: "Sana Iqbal",
     profession: "DOP",
     content:
-      "This platform puts cinematographers like me right in front of serious filmmakers. I’ve never felt more valued or more in-demand—bookings are coming in nonstop!",
+      "Finding projects that match my cinematography style used to be tough. Now I get matched with producers and directors who vibe with my portfolio. Super smooth process.",
     categories: [1, 3, 5],
   },
   {
-    clientImg: ClientImg06,
-    name: "Eloise V.",
+    img: person,
+    name: "Nikhil Sharma",
     profession: "DOP",
     content:
-      "I’ve tried apps, emails, and everything in between. This is the only place where I can showcase my reel and actually get hired. It’s clean, pro, and gets results.",
+      "This platform is like Shaadi.com but for film crews 😅 I connected with a full pre-prod team within a day. No stress, just clean connections and cool people.",
     categories: [1, 3],
   },
   {
-    clientImg: ClientImg07,
-    name: "Pierre-Gilles L.",
+    img: person,
+    name: "Ritika Varma",
     profession: "Actor",
     content:
-      "I created my profile, uploaded my headshots, and got audition invites within hours. It’s honestly wild how fast it works. Wish I found this platform sooner!",
+      "From uploading my portfolio to landing my first web series role — all happened here. The interface is simple, and the community is super active. 10/10 recommend!",
     categories: [1, 2, 5],
   },
   {
-    clientImg: ClientImg08,
-    name: "Danielle K.",
+    img: person,
+    name: "Joshi",
     profession: "Editor",
     content:
-      "I hate complicated tools—this platform is so intuitive I didn’t even need a tutorial. I upload, I match with projects, I get paid. It’s that easy.",
+      "Finally, a platform where I don’t feel invisible. I got hired for three projects last month alone! Editors are finally getting the spotlight we deserve. 😎",
     categories: [1, 4],
   },
   {
-    clientImg: ClientImg09,
-    name: "Mary P.",
+    img: person,
+    name: "Meera Nair",
     profession: "Actor",
     content:
-      "No tech skills? No problem. I just made a profile and started applying. Landed my first short film gig the same week. Total game-changer.",
+      "I’m not super tech-savvy, but this platform is super easy to use. Uploaded my clips, added my experience, and offers started rolling in. Even my mum was impressed.",
     categories: [1, 2],
   },
 ];
@@ -212,7 +196,7 @@ export function Testimonial({
   children,
 }: {
   testimonial: {
-    clientImg: StaticImageData;
+    img: StaticImageData;
     name: string;
     profession: string;
     content: string;
@@ -230,7 +214,14 @@ export function Testimonial({
         <p className="text-indigo-200/65 before:content-['“'] after:content-['”']">
           {children}
         </p>
-
+        <div className="flex items-center gap-3">
+          <Image
+            className="inline-flex shrink-0 rounded-full"
+            src={testimonial.img}
+            width={36}
+            height={36}
+            alt={testimonial.name}
+          />
           <div className="text-sm font-medium text-gray-200">
             <span>{testimonial.name}</span>
             <span className="text-gray-700"> - </span>
@@ -241,7 +232,7 @@ export function Testimonial({
               {testimonial.profession}
             </a>
           </div>
-
+        </div>
       </div>
     </article>
   );
